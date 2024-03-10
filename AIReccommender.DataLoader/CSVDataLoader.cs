@@ -32,7 +32,7 @@ namespace AIReccommender.DataLoader
                         var ContentLine = reader.ReadLine();
                         var columns = ContentLine.Split(';').ToList();
                         if (count == 0) { count++; continue; }
-                        AllDetails.book.ISBN.Add(int.Parse(columns[0]));
+                        AllDetails.book.ISBN.Add(columns[0]);
                         AllDetails.book.BookTitle.Add(columns[1]);
                         AllDetails.book.BookAuthor.Add(columns[2]);
                         AllDetails.book.YearOfPublication.Add(int.Parse(columns[3]));
@@ -76,7 +76,7 @@ namespace AIReccommender.DataLoader
                         var columns = ContentLine.Split(';').ToList();
                         if (count == 0) { count++; continue; }
                         AllDetails.rating.UserID.Add(int.Parse(columns[0]));
-                        AllDetails.rating.ISBN.Add(int.Parse(columns[1]));
+                        AllDetails.rating.ISBN.Add(columns[1]);
                         AllDetails.rating.Rating.Add(int.Parse(columns[2]));
                     }
                 }

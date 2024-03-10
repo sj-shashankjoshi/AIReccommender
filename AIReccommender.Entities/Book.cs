@@ -10,7 +10,7 @@ namespace AIReccommender.Entities
     {
         public List<string> BookTitle { set; get; }
         public List<string> BookAuthor {  set; get; }
-        public List<long> ISBN {  set; get; }
+        public List<string> ISBN {  set; get; }
         public List<string> Publisher { set; get; }
         public List<int> YearOfPublication { set; get; }
         public List<string> ImageUrlSmall { set; get; }
