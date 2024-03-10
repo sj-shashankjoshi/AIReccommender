@@ -41,13 +41,27 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Book.cs" />
-    <Compile Include="BookDetails.cs" />
-    <Compile Include="BookUserRating.cs" />
     <Compile Include="CSVDataLoader.cs" />
     <Compile Include="IDataLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="User.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AIReccommender.CoreEngine\AIReccommender.CoreEngine.csproj">
+      <Project>{b1a7ed21-9292-4d62-b286-e4cf10183d04}</Project>
+      <Name>AIReccommender.CoreEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIReccommender.DataAggregator\AIReccommender.DataAggregator.csproj">
+      <Project>{c88b366e-cf86-48ba-98d5-a42f20fd9567}</Project>
+      <Name>AIReccommender.DataAggregator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIReccommender.Entities\AIReccommender.Entities.csproj">
+      <Project>{8e0f9eff-1a41-470f-b313-156d8ae2de1a}</Project>
+      <Name>AIReccommender.Entities</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIReccommender.UIClient\AIReccommender.UIClient.csproj">
+      <Project>{a8367b7a-95e5-4eac-95df-437081bf611d}</Project>
+      <Name>AIReccommender.UIClient</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
