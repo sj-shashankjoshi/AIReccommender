@@ -7,7 +7,7 @@ using AIReccommender.Entities;
 
 namespace AIReccommender.DataLoader
 {
-    internal interface IDataLoader
+    public interface IDataLoader
     {
         BookDetails Load();
     }

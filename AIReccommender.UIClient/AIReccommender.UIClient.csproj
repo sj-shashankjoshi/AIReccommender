@@ -51,6 +51,18 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\AIReccommender.CoreEngine\AIReccommender.CoreEngine.csproj">
+      <Project>{b1a7ed21-9292-4d62-b286-e4cf10183d04}</Project>
+      <Name>AIReccommender.CoreEngine</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIReccommender.DataAggregator\AIReccommender.DataAggregator.csproj">
+      <Project>{c88b366e-cf86-48ba-98d5-a42f20fd9567}</Project>
+      <Name>AIReccommender.DataAggregator</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AIReccommender.DataLoader\AIReccommender.DataLoader.csproj">
+      <Project>{3f355969-1239-4c8a-9875-743abbc25532}</Project>
+      <Name>AIReccommender.DataLoader</Name>
+    </ProjectReference>
     <ProjectReference Include="..\AIReccommender.Entities\AIReccommender.Entities.csproj">
       <Project>{8e0f9eff-1a41-470f-b313-156d8ae2de1a}</Project>
       <Name>AIReccommender.Entities</Name>
