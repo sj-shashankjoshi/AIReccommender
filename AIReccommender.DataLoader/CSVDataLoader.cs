@@ -20,7 +20,7 @@ namespace AIReccommender.DataLoader
             var FilePathUser = @"C:\demo\AIReccommender.UIClient\BX-CSV-Dump\BX-Users.csv";
             var FilePathBookRating = @"C:\demo\AIReccommender.UIClient\BX-CSV-Dump\BX-Book-Ratings.csv";
 
-            if(File.Exists(FilePathBook))
+            if (File.Exists(FilePathBook) && File.Exists(FilePathUser) && File.Exists(FilePathBookRating))
             {
                 //Reading from BX-Books.csv
                 using (var reader = new StreamReader(FilePathBook))
@@ -37,58 +37,79 @@ namespace AIReccommender.DataLoader
                         bookTemp.ISBN = columns[0];
                         bookTemp.BookTitle = columns[1];
                         bookTemp.BookAuthor = columns[2];
-                        bookTemp.YearOfPublication = int.Parse(columns[3]);
+                        bookTemp.YearOfPublication = columns[3];
                         bookTemp.Publisher = columns[4];
                         bookTemp.ImageUrlSmall = columns[5];
                         bookTemp.ImageUrlMedium = columns[6];
                         bookTemp.ImageUrlLarge = columns[7];
-                        AllDetails.book.Add(bookTemp);
+                        AllDetails.Book.Add(bookTemp);
                     }
                 }
-
-            }
-            if (File.Exists(FilePathUser))
-            {
-                using (var reader = new StreamReader(FilePathUser))
+                using (var reader1 = new StreamReader(FilePathUser))
                 {
                     User UserDataTemp = null;
                     int count = 0;
-                    while (!reader.EndOfStream)
+                    while (!reader1.EndOfStream)
                     {
-                        var ContentLine = reader.ReadLine();
-                        var columns = ContentLine.Split(';').ToList();
-                        if (count == 0) { count++; continue; }
-                        var loc = columns[1].Split(',').ToList();
-                        UserDataTemp  = new User();
-                        UserDataTemp.UserId = int.Parse(columns[0]);
-                        UserDataTemp.City = loc[0];
-                        UserDataTemp.State = loc[1];
-                        UserDataTemp.Country = loc[2];
-                        UserDataTemp.Age = int.Parse(columns[2]);
-                        AllDetails.UserData.Add(UserDataTemp);
+                        try
+                        {
+                            var ContentLine = reader1.ReadLine();
+                            var columns = ContentLine.Split(';').ToList();
+                            if (count == 0) { count++; continue; }
+                            var loc = columns[1].Split(',').ToList();
+                            UserDataTemp = new User();
+                            string a = columns[0].Trim('"');
+                            UserDataTemp.UserId = int.Parse(a);
+                            UserDataTemp.City = loc[0];
+                            UserDataTemp.State = loc[1];
+                            UserDataTemp.Country = loc[2];
+                            string temp = columns[2].Trim('"');
+                            if (temp == "NULL")
+                            {
+                                UserDataTemp.Age = 0;
+                            }
+                            else
+                            {
+                                UserDataTemp.Age = int.Parse(temp);
+                            }
+                            AllDetails.UserData.Add(UserDataTemp);
+                        }
+                        catch (Exception ex)
+                        {
+                            continue;
+                        }
+
                     }
                 }
-            }
-            if(File.Exists(FilePathBookRating))
-            {
-                using (var reader = new StreamReader(FilePathBookRating))
+                using (var reader3 = new StreamReader(FilePathBookRating))
                 {
                     BookUserRating tempRating = null;
                     int count = 0;
-                    while (!reader.EndOfStream)
+                    while (!reader3.EndOfStream)
                     {
-                        var ContentLine = reader.ReadLine();
-                        var columns = ContentLine.Split(';').ToList();
-                        if (count == 0) { count++; continue; }
-                        tempRating = new BookUserRating();
-                        tempRating.UserID=int.Parse(columns[0]);
-                        tempRating.ISBN = columns[1];
-                        tempRating.Rating = int.Parse(columns[2]);
-                        AllDetails.rating.Add(tempRating);
+                        try
+                        {
+                            var ContentLine = reader3.ReadLine();
+                            var columns = ContentLine.Split(';').ToList();
+                            if (count == 0) { count++; continue; }
+                            tempRating = new BookUserRating();
+                            string b = columns[0].Trim('"');
+                            tempRating.UserID = int.Parse(b);
+                            tempRating.ISBN = columns[1];
+                            string a = columns[2].Trim('"');
+                            tempRating.Rating = int.Parse(a);
+                            AllDetails.Rating.Add(tempRating);
+                        }
+                        catch (Exception eq)
+                        {
+                            continue;
+                        }
+
                     }
                 }
-            }
 
+            }
+                      
 
             return AllDetails;
         }

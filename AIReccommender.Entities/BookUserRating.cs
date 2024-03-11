@@ -10,7 +10,7 @@ namespace AIReccommender.Entities
     {
         public int Rating { set; get; }
         public string ISBN { set; get; }
-        public long UserID {  set; get; }
+        public int UserID {  set; get; }
 
     }
 }

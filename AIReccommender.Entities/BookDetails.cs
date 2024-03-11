@@ -8,14 +8,14 @@ namespace AIReccommender.Entities
 {
     public class BookDetails
     {
-        public BookDetails() 
+        public BookDetails()
         {
-            List <Book> book = new List <Book>();
+            List<Book> book = new List<Book>();
             List<BookUserRating> rating = new List<BookUserRating>();
             List<User> user = new List<User>();
-        }       
-        public List<Book> book { set; get; }
-        public List<BookUserRating> rating { set; get; }
-        public List <User> UserData { set; get; }
+        }
+        public List<Book> Book = new List<Book>();
+        public List<BookUserRating> Rating  = new List<BookUserRating>();
+        public List<User> UserData = new List<User>();
     }
 }

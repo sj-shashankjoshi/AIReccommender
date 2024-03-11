@@ -14,19 +14,18 @@ namespace AIReccommender.UIClient
 {
     public class AIReccommenderEngine
     {
-        public static IList<Book> Recommend(Preference preference, int limit)
+        public IList<Book> Recommend(Preference preference, int limit)
         {
             IDataLoader dataLoader = new CSVDataLoader();
             IReccommender reccommender = new PearsonReccommender();
             IRatingsAggregator aggregator = new RatingsAggregator();
             BookDetails BookData = dataLoader.Load();
             Dictionary<string, List<int>> BookRatings = aggregator.Aggregate(BookData, preference);
-            int[] bleh = new int[3];
             List <double> CorelationCoefficients = new List<double>();
             int[] baseData = BookRatings[preference.ISBN].ToArray();
             Dictionary<double, Book> BookCoeffs = new Dictionary<double, Book>();
             double tempCoeff = 0;
-            foreach (Book book in BookData.book)
+            foreach (Book book in BookData.Book)
             {
                 if(preference.ISBN == book.ISBN)
                 {
