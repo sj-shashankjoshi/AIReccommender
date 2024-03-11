@@ -7,6 +7,7 @@ using AIReccommender.Entities;
 using AIReccommender.CoreEngine;
 using AIReccommender.DataAggregator;
 using AIReccommender.DataLoader;
+using AIReccommender.DataCacher;
 using System.ComponentModel;
 
 
@@ -16,10 +17,12 @@ namespace AIReccommender.UIClient
     {
         public IList<Book> Recommend(Preference preference, int limit)
         {
-            IDataLoader dataLoader = new CSVDataLoader();
+            DataLoaderFactory factory = DataLoaderFactory.Instance;
+            IDataCacher dataCacher = new MemDataCacher();
+            BookDataService service = new BookDataService(factory, dataCacher);
             IReccommender reccommender = new PearsonReccommender();
             IRatingsAggregator aggregator = new RatingsAggregator();
-            BookDetails BookData = dataLoader.Load();
+            BookDetails BookData = service.GetBookDetails();
             Dictionary<string, List<int>> BookRatings = aggregator.Aggregate(BookData, preference);
             List <double> CorelationCoefficients = new List<double>();
             int[] baseData = BookRatings[preference.ISBN].ToArray();

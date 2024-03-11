@@ -4,17 +4,16 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{A8367B7A-95E5-4EAC-95DF-437081BF611D}</ProjectGuid>
-    <OutputType>Exe</OutputType>
-    <RootNamespace>AIReccommender.UIClient</RootNamespace>
-    <AssemblyName>AIReccommender.UIClient</AssemblyName>
+    <ProjectGuid>{E34C65C3-FE27-4DDE-966C-AA1D04E8C2C4}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>AIReccommender.DataCacher</RootNamespace>
+    <AssemblyName>AIReccommender.DataCacher</AssemblyName>
     <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugSymbols>true</DebugSymbols>
     <DebugType>full</DebugType>
     <Optimize>false</Optimize>
@@ -24,7 +23,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <PlatformTarget>AnyCPU</PlatformTarget>
     <DebugType>pdbonly</DebugType>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
@@ -34,7 +32,6 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -44,14 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AIReccommenderEngine.cs" />
-    <Compile Include="BookDataService.cs" />
-    <Compile Include="DataLoaderFactory.cs" />
-    <Compile Include="Program.cs" />
+    <Compile Include="IDataCacher.cs" />
+    <Compile Include="MemDataCacher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AIReccommender.CoreEngine\AIReccommender.CoreEngine.csproj">
@@ -61,10 +53,6 @@
     <ProjectReference Include="..\AIReccommender.DataAggregator\AIReccommender.DataAggregator.csproj">
       <Project>{c88b366e-cf86-48ba-98d5-a42f20fd9567}</Project>
       <Name>AIReccommender.DataAggregator</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\AIReccommender.DataCacher\AIReccommender.DataCacher.csproj">
-      <Project>{e34c65c3-fe27-4dde-966c-aa1d04e8c2c4}</Project>
-      <Name>AIReccommender.DataCacher</Name>
     </ProjectReference>
     <ProjectReference Include="..\AIReccommender.DataLoader\AIReccommender.DataLoader.csproj">
       <Project>{3f355969-1239-4c8a-9875-743abbc25532}</Project>

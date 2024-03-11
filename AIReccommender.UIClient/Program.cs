@@ -22,7 +22,7 @@ namespace AIReccommender.UIClient
             preference.ISBN = "0312970242";
             //Console.Write("State: ");
             //preference.State = Console.ReadLine();
-            preference.State = "wisconsin";
+            preference.State = " california";
             //Console.WriteLine("Age");
             //preference.Age = int.Parse(Console.ReadLine());
             preference.Age = 18;
