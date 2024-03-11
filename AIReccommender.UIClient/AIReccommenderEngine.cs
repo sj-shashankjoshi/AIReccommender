@@ -16,9 +16,10 @@ namespace AIReccommender.UIClient
     {
         public IList<Book> Recommend(Preference preference, int limit)
         {
-            IDataLoader dataLoader = new CSVDataLoader();
+            DataLoaderFactory factory = DataLoaderFactory.Instance;
             IReccommender reccommender = new PearsonReccommender();
             IRatingsAggregator aggregator = new RatingsAggregator();
+            var dataLoader = factory.CreateDataLoader();
             BookDetails BookData = dataLoader.Load();
             Dictionary<string, List<int>> BookRatings = aggregator.Aggregate(BookData, preference);
             List <double> CorelationCoefficients = new List<double>();

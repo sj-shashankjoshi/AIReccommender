@@ -42,6 +42,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CSVDataLoader.cs" />
+    <Compile Include="DbDataLoader.cs" />
     <Compile Include="IDataLoader.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
