@@ -8,10 +8,10 @@ namespace AIReccommender.Entities
 {
     public class User
     {
-        public List<long> UserId { get; set; }
-        public List<int> Age { get; set; }
-        public List<string> City {  get; set; }
-        public List<string> State { set; get; }
-        public List<string> Country { get; set; }
+        public long UserId { get; set; }
+        public int Age { get; set; }
+        public string City {  get; set; }
+        public string State { set; get; }
+        public string Country { get; set; }
     }
 }

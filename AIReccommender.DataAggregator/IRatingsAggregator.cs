@@ -9,6 +9,6 @@ namespace AIReccommender.DataAggregator
 {
     public interface IRatingsAggregator
     {
-        Dictionary<string,int> Aggregate(BookDetails bookDetails, Preference preference);
+        Dictionary<string,List<int>>Aggregate(BookDetails bookDetails, Preference preference);
     }
 }

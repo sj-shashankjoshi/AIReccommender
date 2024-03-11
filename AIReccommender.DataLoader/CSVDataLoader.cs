@@ -25,6 +25,7 @@ namespace AIReccommender.DataLoader
                 //Reading from BX-Books.csv
                 using (var reader = new StreamReader(FilePathBook))
                 {
+                    Book bookTemp = null;
                     int count = 0;
                     while (!reader.EndOfStream)
                     {
@@ -32,15 +33,16 @@ namespace AIReccommender.DataLoader
                         var ContentLine = reader.ReadLine();
                         var columns = ContentLine.Split(';').ToList();
                         if (count == 0) { count++; continue; }
-                        AllDetails.book.ISBN.Add(columns[0]);
-                        AllDetails.book.BookTitle.Add(columns[1]);
-                        AllDetails.book.BookAuthor.Add(columns[2]);
-                        AllDetails.book.YearOfPublication.Add(int.Parse(columns[3]));
-                        AllDetails.book.Publisher.Add(columns[4]);
-                        AllDetails.book.ImageUrlSmall.Add(columns[5]);
-                        AllDetails.book.ImageUrlMedium.Add(columns[6]);
-                        AllDetails.book.ImageUrlLarge.Add(columns[7]);
-
+                        bookTemp = new Book();
+                        bookTemp.ISBN = columns[0];
+                        bookTemp.BookTitle = columns[1];
+                        bookTemp.BookAuthor = columns[2];
+                        bookTemp.YearOfPublication = int.Parse(columns[3]);
+                        bookTemp.Publisher = columns[4];
+                        bookTemp.ImageUrlSmall = columns[5];
+                        bookTemp.ImageUrlMedium = columns[6];
+                        bookTemp.ImageUrlLarge = columns[7];
+                        AllDetails.book.Add(bookTemp);
                     }
                 }
 
@@ -49,6 +51,7 @@ namespace AIReccommender.DataLoader
             {
                 using (var reader = new StreamReader(FilePathUser))
                 {
+                    User UserDataTemp = null;
                     int count = 0;
                     while (!reader.EndOfStream)
                     {
@@ -56,12 +59,13 @@ namespace AIReccommender.DataLoader
                         var columns = ContentLine.Split(';').ToList();
                         if (count == 0) { count++; continue; }
                         var loc = columns[1].Split(',').ToList();
-                        AllDetails.UserData.UserId.Add(int.Parse(columns[0]));
-                        AllDetails.UserData.City.Add(loc[0]);
-                        AllDetails.UserData.State.Add(loc[1]);
-                        AllDetails.UserData.Country.Add(loc[2]);
-                        AllDetails.UserData.Age.Add(int.Parse(columns[2]));
-
+                        UserDataTemp  = new User();
+                        UserDataTemp.UserId = int.Parse(columns[0]);
+                        UserDataTemp.City = loc[0];
+                        UserDataTemp.State = loc[1];
+                        UserDataTemp.Country = loc[2];
+                        UserDataTemp.Age = int.Parse(columns[2]);
+                        AllDetails.UserData.Add(UserDataTemp);
                     }
                 }
             }
@@ -69,15 +73,18 @@ namespace AIReccommender.DataLoader
             {
                 using (var reader = new StreamReader(FilePathBookRating))
                 {
+                    BookUserRating tempRating = null;
                     int count = 0;
                     while (!reader.EndOfStream)
                     {
                         var ContentLine = reader.ReadLine();
                         var columns = ContentLine.Split(';').ToList();
                         if (count == 0) { count++; continue; }
-                        AllDetails.rating.UserID.Add(int.Parse(columns[0]));
-                        AllDetails.rating.ISBN.Add(columns[1]);
-                        AllDetails.rating.Rating.Add(int.Parse(columns[2]));
+                        tempRating = new BookUserRating();
+                        tempRating.UserID=int.Parse(columns[0]);
+                        tempRating.ISBN = columns[1];
+                        tempRating.Rating = int.Parse(columns[2]);
+                        AllDetails.rating.Add(tempRating);
                     }
                 }
             }

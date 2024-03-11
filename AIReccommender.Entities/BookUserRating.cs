@@ -8,9 +8,9 @@ namespace AIReccommender.Entities
 {
     public class BookUserRating
     {
-        public List<int> Rating { set; get; }
-        public List<string> ISBN { set; get; }
-        public List<long> UserID {  set; get; }
+        public int Rating { set; get; }
+        public string ISBN { set; get; }
+        public long UserID {  set; get; }
 
     }
 }
