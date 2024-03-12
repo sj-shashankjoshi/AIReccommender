@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace AIReccommender.UIClient
 {
-    internal class Program
+    internal class Client
     {
         static void Main(string[] args)
         {
@@ -22,10 +22,10 @@ namespace AIReccommender.UIClient
             preference.ISBN = "0312970242";
             //Console.Write("State: ");
             //preference.State = Console.ReadLine();
-            preference.State = " california";
+            preference.State = "california";
             //Console.WriteLine("Age");
             //preference.Age = int.Parse(Console.ReadLine());
-            preference.Age = 18;
+            preference.Age = 40;
 
             //Console.Write("Give the limit for the recommendation: ");
             //int limit = int.Parse(Console.ReadLine());

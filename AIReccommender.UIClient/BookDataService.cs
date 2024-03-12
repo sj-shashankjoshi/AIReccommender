@@ -22,18 +22,16 @@ namespace AIReccommender.UIClient
 
         public BookDetails GetBookDetails()
         {
-            // if data in cache
+            
             var cachedData = dataCacher.GetData();
             if (cachedData != null)
             {
                 return cachedData;
             }
 
-            // If not in cache
             var dataLoader = dataLoaderFactory.GetDataLoader();
             var bookDetails = dataLoader.Load();
 
-            // Cache the loaded data
             dataCacher.SetData(bookDetails);
 
             return bookDetails;

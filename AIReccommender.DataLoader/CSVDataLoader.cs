@@ -34,14 +34,14 @@ namespace AIReccommender.DataLoader
                         var columns = ContentLine.Split(';').ToList();
                         if (count == 0) { count++; continue; }
                         bookTemp = new Book();
-                        bookTemp.ISBN = columns[0];
-                        bookTemp.BookTitle = columns[1];
-                        bookTemp.BookAuthor = columns[2];
-                        bookTemp.YearOfPublication = columns[3];
-                        bookTemp.Publisher = columns[4];
-                        bookTemp.ImageUrlSmall = columns[5];
-                        bookTemp.ImageUrlMedium = columns[6];
-                        bookTemp.ImageUrlLarge = columns[7];
+                        bookTemp.ISBN = columns[0].Trim('"');
+                        bookTemp.BookTitle = columns[1].Trim('"');
+                        bookTemp.BookAuthor = columns[2].Trim('"');
+                        bookTemp.YearOfPublication = columns[3].Trim('"');
+                        bookTemp.Publisher = columns[4].Trim('"');
+                        bookTemp.ImageUrlSmall = columns[5].Trim('"');    
+                        bookTemp.ImageUrlMedium = columns[6].Trim('"');
+                        bookTemp.ImageUrlLarge = columns[7].Trim('"');
                         AllDetails.Book.Add(bookTemp);
                     }
                 }
@@ -66,7 +66,7 @@ namespace AIReccommender.DataLoader
                             string temp = columns[2].Trim('"');
                             if (temp == "NULL")
                             {
-                                UserDataTemp.Age = 0;
+                                UserDataTemp.Age = 1;
                             }
                             else
                             {
@@ -95,7 +95,7 @@ namespace AIReccommender.DataLoader
                             tempRating = new BookUserRating();
                             string b = columns[0].Trim('"');
                             tempRating.UserID = int.Parse(b);
-                            tempRating.ISBN = columns[1];
+                            tempRating.ISBN = columns[1].Trim('"');
                             string a = columns[2].Trim('"');
                             tempRating.Rating = int.Parse(a);
                             AllDetails.Rating.Add(tempRating);

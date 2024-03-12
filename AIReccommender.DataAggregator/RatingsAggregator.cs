@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -25,11 +26,15 @@ namespace AIReccommender.DataAggregator
                     preferenceUsers.Add(tempUser);
                 }
             });
-            Parallel.ForEach(preferenceUsers, pUser =>
+            Parallel.ForEach(preferenceUsers, User =>
             {
+                if(User == null)
+                {
+                    return;
+                }
                 foreach (var rating in bookDetails.Rating)
                 {
-                    if(pUser.UserId == rating.UserID)
+                    if(User.UserId == rating.UserID)
                     {
                         if (!RatingsList.ContainsKey(rating.ISBN))
                         {
