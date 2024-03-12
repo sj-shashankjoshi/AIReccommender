@@ -41,7 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AgeGroup.cs" />
+    <Compile Include="AgeGroupChecker.cs" />
     <Compile Include="RatingsAggregator.cs" />
     <Compile Include="IRatingsAggregator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

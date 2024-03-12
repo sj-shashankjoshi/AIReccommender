@@ -9,7 +9,7 @@ namespace AIReccommender.DataCacher
 {
     public class MemDataCacher : IDataCacher
     {
-        public BookDetails cacheData;
+        public BookDetails cacheData = null;
         public BookDetails GetData()
         {
             return cacheData;
@@ -18,6 +18,7 @@ namespace AIReccommender.DataCacher
         {
             cacheData = data;
         }
+        
 
     }
 }

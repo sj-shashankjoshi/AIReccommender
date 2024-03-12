@@ -11,13 +11,13 @@ namespace AIReccommender.UIClient
 {
     public class BookDataService
     {
-        private readonly DataLoaderFactory dataLoaderFactory;
-        private readonly IDataCacher dataCacher;
+        private DataLoaderFactory dataLoaderFactory;
+        private IDataCacher dataCacher;
 
-        public BookDataService(DataLoaderFactory dataLoaderFactory, IDataCacher dataCacher)
+        public BookDataService()
         {
-            this.dataLoaderFactory = dataLoaderFactory;
-            this.dataCacher = dataCacher;
+            dataLoaderFactory = DataLoaderFactory.Instance;
+            dataCacher = new MemDataCacher();
         }
 
         public BookDetails GetBookDetails()

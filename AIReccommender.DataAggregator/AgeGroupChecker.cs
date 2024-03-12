@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace AIReccommender.DataAggregator
 {
-    public class AgeGroup
+    public class AgeGroupChecker
     {
         public string FindAgeGroup(int age)
         {

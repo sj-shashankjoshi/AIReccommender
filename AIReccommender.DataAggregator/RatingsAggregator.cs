@@ -14,8 +14,8 @@ namespace AIReccommender.DataAggregator
         {
             Dictionary<string, List<int>> RatingsList = new Dictionary<string, List<int>>();
             List<User> preferenceUsers = new List<User>();
-            AgeGroup ageGroup = new AgeGroup();
-            string preferenceAgeGroup = ageGroup.FindAgeGroup(preference.Age);
+            AgeGroupChecker ageGroupfinder = new AgeGroupChecker();
+            string preferenceAgeGroup = ageGroupfinder.FindAgeGroup(preference.Age);
             
            
 

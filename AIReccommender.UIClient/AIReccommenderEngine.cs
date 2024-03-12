@@ -17,9 +17,7 @@ namespace AIReccommender.UIClient
     {
         public IList<Book> Recommend(Preference preference, int limit)
         {
-            DataLoaderFactory factory = DataLoaderFactory.Instance;
-            IDataCacher dataCacher = new MemDataCacher();
-            BookDataService service = new BookDataService(factory, dataCacher);
+            BookDataService service = new BookDataService();
             IReccommender reccommender = new PearsonReccommender();
             IRatingsAggregator aggregator = new RatingsAggregator();
             BookDetails BookData = service.GetBookDetails();
