@@ -15,23 +15,23 @@ namespace AIReccommender.UIClient
         static void Main(string[] args)
         {
             Preference preference = new Preference();
-            //Console.WriteLine("Enter your Prefrence: ");
-            Console.WriteLine("Generating Recommended List");
-            //Console.Write("ISBN: ");
-            //preference.ISBN = Console.ReadLine();
-            preference.ISBN = "0312970242";
-            //Console.Write("State: ");
-            //preference.State = Console.ReadLine();
-            preference.State = "california";
-            //Console.WriteLine("Age");
-            //preference.Age = int.Parse(Console.ReadLine());
-            preference.Age = 40;
+            Console.WriteLine("Enter your Prefrence: ");
+            //Console.WriteLine("Generating Recommended List");
+            Console.Write("ISBN: ");
+            preference.ISBN = Console.ReadLine();
+            //preference.ISBN = "0312970242";
+            Console.Write("State: ");
+            preference.State = Console.ReadLine();
+            //preference.State = "california";
+            Console.Write("Age: ");
+            preference.Age = int.Parse(Console.ReadLine());
+            //preference.Age = 40;
 
-            //Console.Write("Give the limit for the recommendation: ");
-            //int limit = int.Parse(Console.ReadLine());
-            int limit = 5;
+            Console.Write("Give the limit for the recommendation: ");
+            int limit = int.Parse(Console.ReadLine());
+            //int limit = 10;
             AIReccommenderEngine Engine1 = new AIReccommenderEngine();
-
+            Console.WriteLine("Generating recommendation list");
             IList <Book> RList = Engine1.Recommend(preference, limit);
             Console.WriteLine("ISBN\t\tBookTitle\t\tBookAuthor\t\tPublisher\t\tYear of Publishing\t\tImage URL");
             foreach (Book book in RList)

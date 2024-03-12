@@ -60,9 +60,9 @@ namespace AIReccommender.DataLoader
                             UserDataTemp = new User();
                             string a = columns[0].Trim('"');
                             UserDataTemp.UserId = int.Parse(a);
-                            UserDataTemp.City = loc[0];
-                            UserDataTemp.State = loc[1];
-                            UserDataTemp.Country = loc[2];
+                            UserDataTemp.City = loc[0].Trim(' ');
+                            UserDataTemp.State = loc[1].Trim(' ');
+                            UserDataTemp.Country = loc[2].Trim(' ');
                             string temp = columns[2].Trim('"');
                             if (temp == "NULL")
                             {

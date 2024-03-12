@@ -94,6 +94,7 @@ namespace AIReccommender.CoreEngine
             CorelationCoeff = r1 / Math.Sqrt(r2);
             //returning coefficient
             return double.Parse(CorelationCoeff.ToString($"F{9}")); 
+            
         } 
         
         public double ArraySum(int[] arr)

@@ -17,11 +17,12 @@ namespace AIReccommender.DataAggregator
             AgeGroupChecker ageGroupfinder = new AgeGroupChecker();
             string preferenceAgeGroup = ageGroupfinder.FindAgeGroup(preference.Age);
             
+            
            
 
             Parallel.ForEach(bookDetails.UserData, tempUser =>
             {
-                if((tempUser.State==preference.State) && (preferenceAgeGroup == ageGroup.FindAgeGroup(tempUser.Age)))
+                if((tempUser.State==preference.State) && (preferenceAgeGroup == ageGroupfinder.FindAgeGroup(tempUser.Age)))
                 {
                     preferenceUsers.Add(tempUser);
                 }
@@ -41,6 +42,7 @@ namespace AIReccommender.DataAggregator
                             RatingsList[rating.ISBN] = new List<int>();
                         }
                         RatingsList[rating.ISBN].Add(rating.Rating);
+
                     }
                 }
             });
